@@ -1,0 +1,695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="OracleModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'HIENHM.BANG' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="BANG">
+          <Property Name="X" Type="clob" />
+        </EntityType>-->
+        <EntityType Name="CHUDE">
+          <Key>
+            <PropertyRef Name="MACD" />
+          </Key>
+          <Property Name="MACD" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="TENCD" Type="nvarchar2" MaxLength="20" Nullable="false" />
+          <Property Name="MOTACD" Type="nvarchar2" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="MAHD" />
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MAHD" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="MASACH" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHD" />
+          </Key>
+          <Property Name="MAHD" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="MAKH" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="NGAY" Type="date" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="TONGTIEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="HOTENKH" Type="nvarchar2" MaxLength="30" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="DT" Type="varchar2" MaxLength="11" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NXB">
+          <Key>
+            <PropertyRef Name="MANXB" />
+          </Key>
+          <Property Name="MANXB" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="TENNXB" Type="nvarchar2" MaxLength="30" Nullable="false" />
+          <Property Name="MOTANXB" Type="nvarchar2" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SACH">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="TENSACH" Type="nvarchar2" MaxLength="30" Nullable="false" />
+          <Property Name="HINHANH" Type="varchar2" MaxLength="30" />
+          <Property Name="MOTA" Type="nvarchar2" MaxLength="500" />
+          <Property Name="GIABAN" Type="number" Precision="38" Scale="0" />
+          <Property Name="MACD" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="MANXB" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="NAMXB" Type="date" Nullable="false" />
+          <Property Name="MATG" Type="varchar2" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TACGIA">
+          <Key>
+            <PropertyRef Name="MATG" />
+          </Key>
+          <Property Name="MATG" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="TENTG" Type="nvarchar2" MaxLength="30" Nullable="false" />
+          <Property Name="MOTATG" Type="nvarchar2" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HIENHM.LIET_KE_CHU_DE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LIET_KE_CHU_DE">
+          <Key>
+            <PropertyRef Name="Ma chu de" />
+            <PropertyRef Name="Ten chu de" />
+          </Key>
+          <Property Name="Ma chu de" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="Ten chu de" Type="nvarchar2" MaxLength="20" Nullable="false" />
+          <Property Name="Mo ta chu de" Type="nvarchar2" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HIENHM.LIET_KE_HOA_DON' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LIET_KE_HOA_DON">
+          <Key>
+            <PropertyRef Name="Ma hoa don" />
+            <PropertyRef Name="Ma khach hang" />
+            <PropertyRef Name="Ngay lap hd" />
+            <PropertyRef Name="Trang thai" />
+          </Key>
+          <Property Name="Ma hoa don" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="Ma khach hang" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="Ngay lap hd" Type="date" Nullable="false" />
+          <Property Name="Trang thai" Type="varchar2" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HIENHM.LIET_KE_SACH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LIET_KE_SACH">
+          <Key>
+            <PropertyRef Name="Ma sach" />
+            <PropertyRef Name="Ten sach" />
+            <PropertyRef Name="Tac gia" />
+          </Key>
+          <Property Name="Ma sach" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="Ten sach" Type="nvarchar2" MaxLength="30" Nullable="false" />
+          <Property Name="Hinh anh" Type="varchar2" MaxLength="30" />
+          <Property Name="Mo ta sach" Type="nvarchar2" MaxLength="500" />
+          <Property Name="Gia ban" Type="number" Precision="38" Scale="0" />
+          <Property Name="Tac gia" Type="nvarchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CHUDE">
+          <End Role="CHUDE" Type="Self.CHUDE" Multiplicity="1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUDE">
+              <PropertyRef Name="MACD" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MACD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="MAHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MAHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NXB">
+          <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NXB">
+              <PropertyRef Name="MANXB" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MANXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TACGIA">
+          <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TACGIA">
+              <PropertyRef Name="MATG" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MATG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DEM_HD_NGAY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM" ReturnType="number">
+          <Parameter Name="NGAYNHAP" Type="date" Mode="In" />
+        </Function>
+        <Function Name="FN_CONVERT_TO_VN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM" ReturnType="nvarchar2">
+          <Parameter Name="STRINPUT" Type="nvarchar2" Mode="In" />
+        </Function>
+        <Function Name="IN_SACH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM">
+          <Parameter Name="IDCD" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="SUA_SACH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM">
+          <Parameter Name="MA" Type="varchar2" Mode="In" />
+          <Parameter Name="TEN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="HINH" Type="varchar2" Mode="In" />
+          <Parameter Name="DIS" Type="nvarchar2" Mode="In" />
+          <Parameter Name="GIA" Type="number" Mode="In" />
+          <Parameter Name="MAC" Type="varchar2" Mode="In" />
+          <Parameter Name="MAN" Type="varchar2" Mode="In" />
+          <Parameter Name="NAM" Type="date" Mode="In" />
+          <Parameter Name="MAT" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="THEM_SACH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM">
+          <Parameter Name="MA" Type="varchar2" Mode="In" />
+          <Parameter Name="TEN" Type="nvarchar2" Mode="In" />
+          <Parameter Name="HINH" Type="varchar2" Mode="In" />
+          <Parameter Name="DIS" Type="nvarchar2" Mode="In" />
+          <Parameter Name="GIA" Type="number" Mode="In" />
+          <Parameter Name="MAC" Type="varchar2" Mode="In" />
+          <Parameter Name="MAN" Type="varchar2" Mode="In" />
+          <Parameter Name="NAM" Type="date" Mode="In" />
+          <Parameter Name="MAT" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="TIM_THEO_NXB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM">
+          <Parameter Name="NXB" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="TIM_THEO_TAC_GIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM">
+          <Parameter Name="TACGIA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="TIM_THEO_TEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM">
+          <Parameter Name="TEN" Type="nvarchar2" Mode="In" />
+        </Function>
+        <Function Name="XOA_SACH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="HIENHM">
+          <Parameter Name="MA" Type="varchar2" Mode="In" />
+        </Function>
+        <EntityContainer Name="OracleModelStoreContainer">
+          <EntitySet Name="CHUDE" EntityType="Self.CHUDE" Schema="HIENHM" store:Type="Tables" />
+          <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="HIENHM" store:Type="Tables" />
+          <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="HIENHM" store:Type="Tables" />
+          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="HIENHM" store:Type="Tables" />
+          <EntitySet Name="NXB" EntityType="Self.NXB" Schema="HIENHM" store:Type="Tables" />
+          <EntitySet Name="SACH" EntityType="Self.SACH" Schema="HIENHM" store:Type="Tables" />
+          <EntitySet Name="TACGIA" EntityType="Self.TACGIA" Schema="HIENHM" store:Type="Tables" />
+          <EntitySet Name="LIET_KE_CHU_DE" EntityType="Self.LIET_KE_CHU_DE" store:Type="Views" store:Schema="HIENHM">
+            <DefiningQuery>SELECT 
+"LIET_KE_CHU_DE"."Ma chu de" AS "Ma chu de", 
+"LIET_KE_CHU_DE"."Ten chu de" AS "Ten chu de", 
+"LIET_KE_CHU_DE"."Mo ta chu de" AS "Mo ta chu de"
+FROM "HIENHM"."LIET_KE_CHU_DE" "LIET_KE_CHU_DE"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LIET_KE_HOA_DON" EntityType="Self.LIET_KE_HOA_DON" store:Type="Views" store:Schema="HIENHM">
+            <DefiningQuery>SELECT 
+"LIET_KE_HOA_DON"."Ma hoa don" AS "Ma hoa don", 
+"LIET_KE_HOA_DON"."Ma khach hang" AS "Ma khach hang", 
+"LIET_KE_HOA_DON"."Ngay lap hd" AS "Ngay lap hd", 
+"LIET_KE_HOA_DON"."Trang thai" AS "Trang thai"
+FROM "HIENHM"."LIET_KE_HOA_DON" "LIET_KE_HOA_DON"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LIET_KE_SACH" EntityType="Self.LIET_KE_SACH" store:Type="Views" store:Schema="HIENHM">
+            <DefiningQuery>SELECT 
+"LIET_KE_SACH"."Ma sach" AS "Ma sach", 
+"LIET_KE_SACH"."Ten sach" AS "Ten sach", 
+"LIET_KE_SACH"."Hinh anh" AS "Hinh anh", 
+"LIET_KE_SACH"."Mo ta sach" AS "Mo ta sach", 
+"LIET_KE_SACH"."Gia ban" AS "Gia ban", 
+"LIET_KE_SACH"."Tac gia" AS "Tac gia"
+FROM "HIENHM"."LIET_KE_SACH" "LIET_KE_SACH"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CHUDE" Association="Self.FK_CHUDE">
+            <End Role="CHUDE" EntitySet="CHUDE" />
+            <End Role="SACH" EntitySet="SACH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON" Association="Self.FK_HOADON">
+            <End Role="HOADON" EntitySet="HOADON" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KHACHHANG" Association="Self.FK_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="HOADON" EntitySet="HOADON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NXB" Association="Self.FK_NXB">
+            <End Role="NXB" EntitySet="NXB" />
+            <End Role="SACH" EntitySet="SACH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH" Association="Self.FK_SACH">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="CTHD" EntitySet="CTHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TACGIA" Association="Self.FK_TACGIA">
+            <End Role="TACGIA" EntitySet="TACGIA" />
+            <End Role="SACH" EntitySet="SACH" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OracleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHUDE">
+          <Key>
+            <PropertyRef Name="MACD" />
+          </Key>
+          <Property Name="MACD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENCD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTACD" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK_CHUDE" FromRole="CHUDE" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="CTHD">
+          <Key>
+            <PropertyRef Name="MAHD" />
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MAHD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MASACH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SOLUONG" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK_HOADON" FromRole="CTHD" ToRole="HOADON" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK_SACH" FromRole="CTHD" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHD" />
+          </Key>
+          <Property Name="MAHD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TONGTIEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK_HOADON" FromRole="HOADON" ToRole="CTHD" />
+          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_KHACHHANG" FromRole="HOADON" ToRole="KHACHHANG" />
+        </EntityType>
+        <EntityType Name="KHACHHANG">
+          <Key>
+            <PropertyRef Name="MAKH" />
+          </Key>
+          <Property Name="MAKH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOTENKH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DT" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HOADONs" Relationship="Self.FK_KHACHHANG" FromRole="KHACHHANG" ToRole="HOADON" />
+        </EntityType>
+        <EntityType Name="NXB">
+          <Key>
+            <PropertyRef Name="MANXB" />
+          </Key>
+          <Property Name="MANXB" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENNXB" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTANXB" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK_NXB" FromRole="NXB" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="SACH">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENSACH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MOTA" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GIABAN" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="MACD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MANXB" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAMXB" Type="DateTime" Nullable="false" />
+          <Property Name="MATG" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CHUDE" Relationship="Self.FK_CHUDE" FromRole="SACH" ToRole="CHUDE" />
+          <NavigationProperty Name="CTHDs" Relationship="Self.FK_SACH" FromRole="SACH" ToRole="CTHD" />
+          <NavigationProperty Name="NXB" Relationship="Self.FK_NXB" FromRole="SACH" ToRole="NXB" />
+          <NavigationProperty Name="TACGIA" Relationship="Self.FK_TACGIA" FromRole="SACH" ToRole="TACGIA" />
+        </EntityType>
+        <EntityType Name="TACGIA">
+          <Key>
+            <PropertyRef Name="MATG" />
+          </Key>
+          <Property Name="MATG" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENTG" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTATG" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK_TACGIA" FromRole="TACGIA" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="LIET_KE_CHU_DE">
+          <Key>
+            <PropertyRef Name="Ma_chu_de" />
+            <PropertyRef Name="Ten_chu_de" />
+          </Key>
+          <Property Name="Ma_chu_de" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten_chu_de" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mo_ta_chu_de" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LIET_KE_HOA_DON">
+          <Key>
+            <PropertyRef Name="Ma_hoa_don" />
+            <PropertyRef Name="Ma_khach_hang" />
+            <PropertyRef Name="Ngay_lap_hd" />
+            <PropertyRef Name="Trang_thai" />
+          </Key>
+          <Property Name="Ma_hoa_don" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ma_khach_hang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ngay_lap_hd" Type="DateTime" Nullable="false" />
+          <Property Name="Trang_thai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LIET_KE_SACH">
+          <Key>
+            <PropertyRef Name="Ma_sach" />
+            <PropertyRef Name="Ten_sach" />
+            <PropertyRef Name="Tac_gia" />
+          </Key>
+          <Property Name="Ma_sach" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten_sach" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hinh_anh" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Mo_ta_sach" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Gia_ban" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="Tac_gia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CHUDE">
+          <End Role="CHUDE" Type="Self.CHUDE" Multiplicity="1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUDE">
+              <PropertyRef Name="MACD" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MACD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOADON">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="MAHD" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MAHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="CTHD">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KHACHHANG">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="HOADON">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NXB">
+          <End Role="NXB" Type="Self.NXB" Multiplicity="1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NXB">
+              <PropertyRef Name="MANXB" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MANXB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TACGIA">
+          <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TACGIA">
+              <PropertyRef Name="MATG" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MATG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHUDEs" EntityType="Self.CHUDE" />
+          <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+          <EntitySet Name="NXBs" EntityType="Self.NXB" />
+          <EntitySet Name="SACHes" EntityType="Self.SACH" />
+          <EntitySet Name="TACGIAs" EntityType="Self.TACGIA" />
+          <EntitySet Name="LIET_KE_CHU_DE" EntityType="Self.LIET_KE_CHU_DE" />
+          <EntitySet Name="LIET_KE_HOA_DON" EntityType="Self.LIET_KE_HOA_DON" />
+          <EntitySet Name="LIET_KE_SACH" EntityType="Self.LIET_KE_SACH" />
+          <AssociationSet Name="FK_CHUDE" Association="Self.FK_CHUDE">
+            <End Role="CHUDE" EntitySet="CHUDEs" />
+            <End Role="SACH" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOADON" Association="Self.FK_HOADON">
+            <End Role="HOADON" EntitySet="HOADONs" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH" Association="Self.FK_SACH">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="CTHD" EntitySet="CTHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KHACHHANG" Association="Self.FK_KHACHHANG">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="HOADON" EntitySet="HOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NXB" Association="Self.FK_NXB">
+            <End Role="NXB" EntitySet="NXBs" />
+            <End Role="SACH" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TACGIA" Association="Self.FK_TACGIA">
+            <End Role="TACGIA" EntitySet="TACGIAs" />
+            <End Role="SACH" EntitySet="SACHes" />
+          </AssociationSet>
+          <FunctionImport Name="IN_SACH">
+          <Parameter Name="IDCD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SUA_SACH">
+            <Parameter Name="MA" Mode="In" Type="String" />
+            <Parameter Name="TEN" Mode="In" Type="String" />
+            <Parameter Name="HINH" Mode="In" Type="String" />
+            <Parameter Name="DIS" Mode="In" Type="String" />
+            <Parameter Name="GIA" Mode="In" Type="Decimal" />
+            <Parameter Name="MAC" Mode="In" Type="String" />
+            <Parameter Name="MAN" Mode="In" Type="String" />
+            <Parameter Name="NAM" Mode="In" Type="DateTime" />
+            <Parameter Name="MAT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="THEM_SACH">
+            <Parameter Name="MA" Mode="In" Type="String" />
+            <Parameter Name="TEN" Mode="In" Type="String" />
+            <Parameter Name="HINH" Mode="In" Type="String" />
+            <Parameter Name="DIS" Mode="In" Type="String" />
+            <Parameter Name="GIA" Mode="In" Type="Decimal" />
+            <Parameter Name="MAC" Mode="In" Type="String" />
+            <Parameter Name="MAN" Mode="In" Type="String" />
+            <Parameter Name="NAM" Mode="In" Type="DateTime" />
+            <Parameter Name="MAT" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TIM_THEO_NXB">
+          <Parameter Name="NXB" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TIM_THEO_TAC_GIA">
+          <Parameter Name="TACGIA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TIM_THEO_TEN">
+          <Parameter Name="TEN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="XOA_SACH">
+          <Parameter Name="MA" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OracleModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CHUDEs">
+            <EntityTypeMapping TypeName="OracleModel.CHUDE">
+              <MappingFragment StoreEntitySet="CHUDE">
+                <ScalarProperty Name="MACD" ColumnName="MACD" />
+                <ScalarProperty Name="TENCD" ColumnName="TENCD" />
+                <ScalarProperty Name="MOTACD" ColumnName="MOTACD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CTHDs">
+            <EntityTypeMapping TypeName="OracleModel.CTHD">
+              <MappingFragment StoreEntitySet="CTHD">
+                <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="OracleModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHACHHANGs">
+            <EntityTypeMapping TypeName="OracleModel.KHACHHANG">
+              <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="HOTENKH" ColumnName="HOTENKH" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DT" ColumnName="DT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NXBs">
+            <EntityTypeMapping TypeName="OracleModel.NXB">
+              <MappingFragment StoreEntitySet="NXB">
+                <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+                <ScalarProperty Name="TENNXB" ColumnName="TENNXB" />
+                <ScalarProperty Name="MOTANXB" ColumnName="MOTANXB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SACHes">
+            <EntityTypeMapping TypeName="OracleModel.SACH">
+              <MappingFragment StoreEntitySet="SACH">
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+                <ScalarProperty Name="MACD" ColumnName="MACD" />
+                <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+                <ScalarProperty Name="NAMXB" ColumnName="NAMXB" />
+                <ScalarProperty Name="MATG" ColumnName="MATG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TACGIAs">
+            <EntityTypeMapping TypeName="OracleModel.TACGIA">
+              <MappingFragment StoreEntitySet="TACGIA">
+                <ScalarProperty Name="MATG" ColumnName="MATG" />
+                <ScalarProperty Name="TENTG" ColumnName="TENTG" />
+                <ScalarProperty Name="MOTATG" ColumnName="MOTATG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIET_KE_CHU_DE">
+            <EntityTypeMapping TypeName="OracleModel.LIET_KE_CHU_DE">
+              <MappingFragment StoreEntitySet="LIET_KE_CHU_DE">
+                <ScalarProperty Name="Ma_chu_de" ColumnName="Ma chu de" />
+                <ScalarProperty Name="Ten_chu_de" ColumnName="Ten chu de" />
+                <ScalarProperty Name="Mo_ta_chu_de" ColumnName="Mo ta chu de" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIET_KE_HOA_DON">
+            <EntityTypeMapping TypeName="OracleModel.LIET_KE_HOA_DON">
+              <MappingFragment StoreEntitySet="LIET_KE_HOA_DON">
+                <ScalarProperty Name="Ma_hoa_don" ColumnName="Ma hoa don" />
+                <ScalarProperty Name="Ma_khach_hang" ColumnName="Ma khach hang" />
+                <ScalarProperty Name="Ngay_lap_hd" ColumnName="Ngay lap hd" />
+                <ScalarProperty Name="Trang_thai" ColumnName="Trang thai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIET_KE_SACH">
+            <EntityTypeMapping TypeName="OracleModel.LIET_KE_SACH">
+              <MappingFragment StoreEntitySet="LIET_KE_SACH">
+                <ScalarProperty Name="Ma_sach" ColumnName="Ma sach" />
+                <ScalarProperty Name="Ten_sach" ColumnName="Ten sach" />
+                <ScalarProperty Name="Hinh_anh" ColumnName="Hinh anh" />
+                <ScalarProperty Name="Mo_ta_sach" ColumnName="Mo ta sach" />
+                <ScalarProperty Name="Gia_ban" ColumnName="Gia ban" />
+                <ScalarProperty Name="Tac_gia" ColumnName="Tac gia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="IN_SACH" FunctionName="OracleModel.Store.IN_SACH" />
+          <FunctionImportMapping FunctionImportName="SUA_SACH" FunctionName="OracleModel.Store.SUA_SACH" />
+          <FunctionImportMapping FunctionImportName="THEM_SACH" FunctionName="OracleModel.Store.THEM_SACH" />
+          <FunctionImportMapping FunctionImportName="TIM_THEO_NXB" FunctionName="OracleModel.Store.TIM_THEO_NXB" />
+          <FunctionImportMapping FunctionImportName="TIM_THEO_TAC_GIA" FunctionName="OracleModel.Store.TIM_THEO_TAC_GIA" />
+          <FunctionImportMapping FunctionImportName="TIM_THEO_TEN" FunctionName="OracleModel.Store.TIM_THEO_TEN" />
+          <FunctionImportMapping FunctionImportName="XOA_SACH" FunctionName="OracleModel.Store.XOA_SACH" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
