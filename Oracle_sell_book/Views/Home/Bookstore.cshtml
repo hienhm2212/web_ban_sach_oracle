@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Oracle_sell_book.Models.SACH>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h4>DANH MỤC SÁCH</h4>
+<hr />
+<table class="formf">
+    <tr>
+        <th>
+            Tên sách
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENSACH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GIABAN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MOTA)
+            </td>
+
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MASACH }) |
+                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.MASACH }) |
+                @Html.ActionLink("Xoá", "Delete", new { id = item.MASACH })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+
+
+<img src="@Url.Content("~/Content/images/banner_3.jpg")" alt="Image" style="width:100%">

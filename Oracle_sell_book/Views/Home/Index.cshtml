@@ -1,48 +1,30 @@
-﻿@model IEnumerable<Oracle_sell_book.Models.SACH>
+﻿<!doctype html>
+<html>
+<head>
+    <title>QNimate Slider</title>
+    <link href="~/Content/mystyle.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="image-holder">
+        <img src="~/Content/images/banner_1.jpg" class="mySlides" style="width:50%" />
+        <img src="~/Content/images/banner_2.jpg" class="mySlides" style="width:50%" />
+        <img src="~/Content/images/banner_3.jpg" class="mySlides" style="width:50%" />
+    </div>
+</body>
+</html>
+<script>
+var myIndex = 0;
+carousel();
 
-@{
-    ViewBag.Title = "Home Page";
-}
-
-
-<h4>DANH MỤC SÁCH</h4>
-<hr />
-<table class="formf">
-    <tr>
-        <th>
-            Tên sách
-        </th>
-        <th>
-            Giá bán
-        </th>
-        <th>
-            Mô tả
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TENSACH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GIABAN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MOTA)
-            </td>
-
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.MASACH }) |
-                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.MASACH }) |
-                @Html.ActionLink("Xoá", "Delete", new { id = item.MASACH }) 
-            </td>
-        </tr>
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
     }
-     
-</table>
-<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>

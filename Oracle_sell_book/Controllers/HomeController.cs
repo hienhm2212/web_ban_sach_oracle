@@ -16,6 +16,11 @@ namespace Oracle_sell_book.Controllers
         //Get sach
         public ActionResult Index()
         {
+            return View("Index");
+        }
+
+        public ActionResult Bookstore()
+        {
             return View(db.SACHes.ToList());
         }
 
