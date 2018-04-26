@@ -2,47 +2,38 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    ViewBag.Title = "Bookstore";
+}
 <h4>DANH MỤC SÁCH</h4>
 <hr />
-<table class="formf">
-    <tr>
-        <th>
-            Tên sách
-        </th>
-        <th>
-            Giá bán
-        </th>
-        <th>
-            Mô tả
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TENSACH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GIABAN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MOTA)
-            </td>
-
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.MASACH }) |
-                @Html.ActionLink("Xem chi tiết", "Details", new { id = item.MASACH }) |
-                @Html.ActionLink("Xoá", "Delete", new { id = item.MASACH })
-            </td>
-        </tr>
-    }
-
-</table>
-<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            
+            <div class="col-md-4">
+                <div class="product-item">
+                    <div class="pi-img-wrapper">
+                        <img src="@Html.Raw(item.HINHANH)" class="img-responsive" alt="Berry Lace Dress">
+                        <div>
+                            <a href="#" class="btn">Zoom</a>
+                            <a href="#" class="btn">View</a>
+                        </div>
+                    </div>
+                    <h3><a href="shop-item.html">@Html.DisplayFor(modelItem => item.TENSACH)</a></h3>
+                    <div class="pi-price">@Html.DisplayFor(modelItem => item.GIABAN) VNĐ</div>
+                    <a href="javascript:;" class="btn add2cart">Add to cart</a>
+                </div>
+            </div>
+       
+        }
+    </div>
+</div>
+<br>
+<br>
 
 
-<img src="@Url.Content("~/Content/images/banner_3.jpg")" alt="Image" style="width:100%">
+
+
