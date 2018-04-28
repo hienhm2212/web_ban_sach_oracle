@@ -6,12 +6,15 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using Oracle_sell_book;
 using Oracle_sell_book.Models;
+using Oracle.ManagedDataAccess.Client;
+using System.Net;
 
 namespace Oracle_sell_book.Controllers
 {
     public class HomeController : Controller
     {
         private Entities db = new Entities();
+        OracleParameter oraP = new OracleParameter();
 
         //Get sach
         public ActionResult Index()
@@ -36,6 +39,19 @@ namespace Oracle_sell_book.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult BookDetails(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SACH sach = db.SACHes.Find(id);
+            if (sach == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sach);
         }
     }
 }

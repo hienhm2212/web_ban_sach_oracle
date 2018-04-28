@@ -18,8 +18,7 @@
                     <div class="pi-img-wrapper">
                         <img src="@Html.Raw(item.HINHANH)" class="img-responsive" alt="Berry Lace Dress">
                         <div>
-                            <a href="#" class="btn">Zoom</a>
-                            <a href="#" class="btn">View</a>
+                            @Html.ActionLink("Xem chi tiết", "BookDetails", new { id = item.MASACH })
                         </div>
                     </div>
                     <h3><a href="shop-item.html">@Html.DisplayFor(modelItem => item.TENSACH)</a></h3>
